@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/facebook', 'BotController@bot')->middleware('chat');
+Route::post('/facebook', 'BotController@bot');
+
+Route::get('/policy', function () {
+    return 'We do not reveal any information to public.';
+});
