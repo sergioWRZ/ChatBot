@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'templates'         => 'adminlte-templates',
+    'templates'         => 'core-templates',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
 
     'options' => [
 
-        'softDelete' => true,
+        'softDelete' => false,
 
         'tables_searchable_default' => false,
     ],

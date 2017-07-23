@@ -10,7 +10,7 @@
         "laravel/tinker": "~1.0",
         "infyomlabs/laravel-generator": "5.4.x-dev",
         "laravelcollective/html": "^5.4.0",
-        "infyomlabs/adminlte-templates": "5.4.x-dev",
+        "infyomlabs/core-templates": "dev-develop",
         "doctrine/dbal": "~2.3"
     },
     "require-dev": {
