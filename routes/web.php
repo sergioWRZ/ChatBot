@@ -21,3 +21,7 @@ Route::post('/facebook', 'BotController@bot');
 Route::get('/policy', function () {
     return 'We do not reveal any information to public.';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
