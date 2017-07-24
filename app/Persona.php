@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
@@ -24,5 +25,10 @@ class Persona extends Model
     ]);
     $lastId = $this->all()->last()->id;
     return $lastId;
+  }
+  
+  public function setFechaNacimientoAttribute($value)
+  {
+    $this->attributes['fecha_nacimiento'] = Carbon::parse($value);
   }
 }

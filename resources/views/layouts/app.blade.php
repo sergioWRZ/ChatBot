@@ -1,136 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+  <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
-          type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+  <!-- Bootstrap 3.3.6 -->
+  {!!Html::style('bootstrap/css/bootstrap.min.css')!!}
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  {!!Html::style('plugins/datepicker/datepicker3.css')!!}
+  {!!Html::style('plugins/select2/select2.min.css')!!}
+  <!-- Theme style -->
+  {!!Html::style('dist/css/AdminLTE.min.css')!!}
+  <!-- iCheck -->
+  {!!Html::style('plugins/iCheck/square/blue.css')!!}
 
-    <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.1/css/bootstrap-toggle.min.css">
+  <!-- Fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
+        type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
-    <link href="http://blackrockdigital.github.io/startbootstrap-simple-sidebar/css/simple-sidebar.css"
-          rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.1/css/bootstrap-toggle.min.css">
 
-    @yield('css')
+  <link href="http://blackrockdigital.github.io/startbootstrap-simple-sidebar/css/simple-sidebar.css"
+        rel="stylesheet">
 
-    <style type="text/css">
-        .sidebar-nav li.active > a,
-        .sidebar-nav li > a:focus {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-        }
+  @yield('css')
 
-        .header {
-            width: 100%;
-            background: #e7e7e7;
-            color: #fff;
-            height: 50px;
+  <style type="text/css">
+    .sidebar-nav li.active > a,
+    .sidebar-nav li > a:focus {
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+    }
 
-        }
-    </style>
+    .header {
+      width: 100%;
+      background: #e7e7e7;
+      color: #fff;
+      height: 50px;
+
+    }
+  </style>
 </head>
 <body id="app-layout">
 
 @if (Auth::guest())
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="app-navbar-collapse">
+        <!-- Left Side Of Navbar -->
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{{ url('/') }}">Home</a></li>
+        </ul>
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    InfyOm Generator
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        <!-- Right Side Of Navbar -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ url('/login') }}">Login</a></li>
+          <li><a href="{{ url('/register') }}">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 @else
-    <div id="wrapper" class="">
+  <div id="wrapper" class="">
     <!-- Sidebar -->
     @include('layouts.sidebar')
     <header class="header">
-        <a href="#menu-toggle"
-           style="margin-top: 8px;margin-left: 5px;background-color: #E7E7E7;border-color: #E7E7E7"
-           class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i>
-        </a>
+      <a href="#menu-toggle"
+         style="margin-top: 8px;margin-left: 5px;background-color: #E7E7E7;border-color: #E7E7E7"
+         class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
 
         <span class="pull-right" style="margin-right: 10px;margin-top: 15px">
             <a href="{{ url('/logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout
             </a>
             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
+              {{ csrf_field() }}
             </form>
         </span>
     </header>
-    </div>
-@endif
+  </div>
+  @endif
 
-<!-- Page Content -->
-<div id="page-content-wrapper">
+    <!-- Page Content -->
+  <div id="page-content-wrapper">
 
     <div class="container-fluid">
 
-        <div class="row">
-            @if (config('infyom.laravel_generator.add_on.menu.enabled') and !Auth::guest())
-                <div class="col-md-10 col-md-offset-2">
-                    @yield('content')
-                </div>
-            @else
-                <div class="col-md-12">
-                    @yield('content')
-                </div>
-            @endif
-        </div>
+      <div class="row">
+        @if (config('infyom.laravel_generator.add_on.menu.enabled') and !Auth::guest())
+          <div class="col-md-10 col-md-offset-2">
+            @yield('content')
+          </div>
+        @else
+          <div class="col-md-12">
+            @yield('content')
+          </div>
+        @endif
+      </div>
     </div>
-</div>
-<!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#page-content-wrapper -->
 
-<!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.1/js/bootstrap-toggle.min.js"></script>
+  <!-- JavaScripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.1/js/bootstrap-toggle.min.js"></script>
 
-<script>
+  <!-- jQuery 2.2.3 -->
+  {!!Html::script('plugins/jQuery/jquery-2.2.3.min.js')!!}
+    <!-- Bootstrap 3.3.6 -->
+  {!!Html::script('bootstrap/js/bootstrap.min.js')!!}
+    <!-- iCheck -->
+  {!!Html::script('plugins/datepicker/bootstrap-datepicker.js')!!}
+  {!!Html::script('plugins/iCheck/icheck.min.js')!!}
+
+  <script>
 
     $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
     });
 
-</script>
+    $(function () {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+      });
 
-@yield('scripts')
+      //Date picker
+      $('#datepicker').datepicker({
+        autoclose: true
+      });
+    });
+  </script>
+
+  @yield('scripts')
 
 </body>
 </html>
