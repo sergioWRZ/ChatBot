@@ -2,30 +2,23 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+  use Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'roll_id', 'persona_id', 'visible','director'
-    ];
+  protected $dates = ['deleted_at'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+  protected $fillable = [
+    'name', 'email', 'password', 'persona_id', 'colegio_id'
+  ];
+
+  protected $hidden = [
+    'password', 'remember_token',
+  ];
 
   public function scope_crearUser($query, array $data, $id)
   {
@@ -33,9 +26,7 @@ class User extends Authenticatable
       'name' => $data['name'],
       'email' => $data['email'],
       'password' => bcrypt($data['password']),
-      'roll_id' => $data['roll_id'],
       'persona_id' => $id,
-      'visible' => '1'
     ]);
   }
 }

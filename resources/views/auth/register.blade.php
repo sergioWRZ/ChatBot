@@ -83,18 +83,6 @@
           @endif
         </div>
 
-        <div class="form-group {{ $errors->has('telefono') ? ' has-error' : '' }} has-feedback">
-          @if ($errors->has('telefono'))
-            <label class="control-label" for="telefono"><i class="fa fa-times-circle-o"></i> Input with
-              error</label>
-          @endif
-          <input type="number" class="form-control" placeholder="Telefono..." name="telefono" value="{{ old('telefono') }}">
-          <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
-          @if ($errors->has('telefono'))
-            <span class="help-block">*{{ $errors->first('telefono') }}</span>
-          @endif
-        </div>
-
         <div class="form-group {{ $errors->has('celular') ? ' has-error' : '' }} has-feedback">
           @if ($errors->has('celular'))
             <label class="control-label" for="celular"><i class="fa fa-times-circle-o"></i> Input with

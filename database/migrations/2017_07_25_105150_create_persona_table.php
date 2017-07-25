@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCursoTurnoTable extends Migration
+class CreatePersonaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,18 @@ class CreateCursoTurnoTable extends Migration
      */
     public function up()
     {
-        Schema::create('curso_turno', function (Blueprint $table) {
+        Schema::create('persona', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('curso_id');
-          $table->integer('turno_id');
+          $table->char('nombres', 50);
+          $table->char('apellidos', 50);
+          $table->char('celular', 10)->nullable();
+          $table->date('fecha_nacimiento')->nullable();
+
+          $table->integer('colegio_id');
+          $table->char('tipo_persona', 1);
+
+          $table->integer('curso_id')->nullable();
+
           $table->softDeletes();
           $table->timestamps();
         });
@@ -29,6 +37,6 @@ class CreateCursoTurnoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curso_turno');
+        Schema::dropIfExists('persona');
     }
 }

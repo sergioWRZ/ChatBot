@@ -29,7 +29,6 @@ class RegisterController extends Controller
       'nombres' => 'required|string|max:50',
       'apellidos' => 'required|string|max:50',
       'email' => 'required|string|email|max:255|unique:users',
-      'telefono' => 'required|string|max:20',
       'celular' => 'required|string|max:10',
       'fecha_nacimiento' => 'required',
       'password' => 'required|string|min:6|confirmed',
@@ -49,11 +48,6 @@ class RegisterController extends Controller
   
   protected function create(array $data)
   {
-    if (count(User::all()) == 0) {
-      $data['roll_id'] = 3;//Roll de Super Admin
-    } else {
-      $data['roll_id'] = 1;//Roll de Director
-    }
     $id = Persona::_crearPersona($data);
     Colegio::_crearColegio($id, $data);
     return User::_crearUser($data, $id);
