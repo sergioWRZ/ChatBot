@@ -13,6 +13,8 @@ class Persona extends Model
     'nombres', 'apellidos', 'telefono', 'celular', 'fecha_nacimiento', 'visible','director'
   ];
 
+  public $timestamps = true;
+
   public function scope_crearPersona($query, array $data)
   {
     $this->create([

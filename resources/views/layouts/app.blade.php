@@ -11,6 +11,7 @@
   {!!Html::style('bootstrap/css/bootstrap.min.css')!!}
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   {!!Html::style('plugins/datepicker/datepicker3.css')!!}
   {!!Html::style('plugins/select2/select2.min.css')!!}
   <!-- Theme style -->
@@ -51,7 +52,6 @@
   </style>
 </head>
 <body id="app-layout">
-
 @if (Auth::guest())
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -121,6 +121,7 @@
     <!-- Bootstrap 3.3.6 -->
   {!!Html::script('bootstrap/js/bootstrap.min.js')!!}
     <!-- iCheck -->
+  {!!Html::script('plugins/select2/select2.full.min.js')!!}
   {!!Html::script('plugins/datepicker/bootstrap-datepicker.js')!!}
   {!!Html::script('plugins/iCheck/icheck.min.js')!!}
 
@@ -137,6 +138,8 @@
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' // optional
       });
+
+      $(".select2").select2();
 
       //Date picker
       $('#datepicker').datepicker({

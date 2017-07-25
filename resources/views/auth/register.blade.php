@@ -7,11 +7,10 @@
     </div>
 
     <div class="register-box-body">
-      <p class="login-box-msg">Register a new membership</p>
 
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
         {!! csrf_field() !!}
-
+        <label style="display: block; text-align: center" title> Registro:</label>
         <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
           @if ($errors->has('name'))
             <label class="control-label" for="name"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
@@ -23,6 +22,24 @@
           @endif
         </div>
 
+        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('password'))
+            <label class="control-label" for="password"><i class="fa fa-times-circle-o"></i> Input with
+              error</label>
+          @endif
+          <input type="password" class="form-control" placeholder="Password" name="password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          @if ($errors->has('password'))
+            <span class="help-block">*{{ $errors->first('password') }}</span>
+          @endif
+        </div>
+
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation" required>
+          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+
+        <label style="display: block; text-align: center" title> Datos Personales:</label>
         <div class="form-group {{ $errors->has('nombres') ? ' has-error' : '' }} has-feedback">
           @if ($errors->has('nombres'))
             <label class="control-label" for="nombres"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
@@ -43,6 +60,15 @@
           @if ($errors->has('apellidos'))
             <span class="help-block">*{{ $errors->first('apellidos') }}</span>
           @endif
+        </div>
+
+        <div class="form-group">
+          <div class="input-group date">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input type="text" class="form-control pull-right" placeholder="Fecha de nacimiento..." id="datepicker" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
+          </div>
         </div>
 
         <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
@@ -75,36 +101,88 @@
               error</label>
           @endif
           <input type="number" class="form-control" placeholder="Celular..." name="celular" value="{{ old('celular') }}">
-          <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+          <span class="glyphicon glyphicon-phone form-control-feedback"></span>
           @if ($errors->has('celular'))
             <span class="help-block">*{{ $errors->first('celular') }}</span>
           @endif
         </div>
 
+        <label style="display: block; text-align: center" title> Datos del Colegio:</label>
+        <div class="form-group {{ $errors->has('nombre') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('nombre'))
+            <label class="control-label" for="nombre"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
+          @endif
+          <input type="text" class="form-control" placeholder="Nombre del colegio..." name="nombre" value="{{ old('nombre') }}">
+          <span class="glyphicon glyphicon-book form-control-feedback"></span>
+          @if ($errors->has('nombre'))
+            <span class="help-block">*{{ $errors->first('nombre') }}</span>
+          @endif
+        </div>
+
+        <div class="form-group {{ $errors->has('codigo_seduca') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('codigo_seduca'))
+            <label class="control-label" for="codigo_seduca"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
+          @endif
+          <input type="text" class="form-control" placeholder="Codigo-Seduca del colegio..." name="codigo_seduca" value="{{ old('codigo_seduca') }}">
+          <span class="fa fa-key form-control-feedback"></span>
+          @if ($errors->has('codigo_seduca'))
+            <span class="help-block">*{{ $errors->first('codigo_seduca') }}</span>
+          @endif
+        </div>
+
+        <div class="form-group {{ $errors->has('telefonoc') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('telefonoc'))
+            <label class="control-label" for="telefonoc"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
+          @endif
+          <input type="text" class="form-control" placeholder="Telefono del colegio..." name="telefonoc" value="{{ old('telefonoc') }}">
+          <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+          @if ($errors->has('telefonoc'))
+            <span class="help-block">*{{ $errors->first('telefonoc') }}</span>
+          @endif
+        </div>
+
         <div class="form-group">
-          <div class="input-group date">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input type="text" class="form-control pull-right" placeholder="Fecha de nacimiento..." id="datepicker" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
-          </div>
+          <select name="tipo_colegio" class="form-control select2" style="width: 100%;">
+            <option value="1">Publico</option>
+            <option value="2">Privado</option>
+            <option value="3">Convenio</option>
+          </select>
         </div>
 
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
-          @if ($errors->has('password'))
-            <label class="control-label" for="password"><i class="fa fa-times-circle-o"></i> Input with
-              error</label>
+        <div class="form-group">
+          <select name="departamento" class="form-control select2" style="width: 100%;">
+            <option value="1">Beni</option>
+            <option value="2">Chuquisaca</option>
+            <option value="3">Cochabamba</option>
+            <option value="4">Santa Cruz</option>
+            <option value="5">La Paz</option>
+            <option value="6">Oruro</option>
+            <option value="7">Pando</option>
+            <option value="8">Potosí</option>
+            <option value="9">Tarija</option>
+          </select>
+        </div>
+
+        <div class="form-group {{ $errors->has('ciudad') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('ciudad'))
+            <label class="control-label" for="ciudad"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
           @endif
-          <input type="password" class="form-control" placeholder="Password" name="password">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          @if ($errors->has('password'))
-            <span class="help-block">*{{ $errors->first('password') }}</span>
+          <input type="text" class="form-control" placeholder="Ciudad del colegio..." name="ciudad" value="{{ old('ciudad') }}">
+          <span class="fa fa-map form-control-feedback"></span>
+          @if ($errors->has('ciudad'))
+            <span class="help-block">*{{ $errors->first('ciudad') }}</span>
           @endif
         </div>
 
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation" required>
-          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <div class="form-group {{ $errors->has('ubicacion') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('ubicacion'))
+            <label class="control-label" for="ubicacion"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
+          @endif
+          <input type="text" class="form-control" placeholder="Direccion del colegio..." name="ubicacion" value="{{ old('ubicacion') }}">
+          <span class="fa fa-map-marker form-control-feedback"></span>
+          @if ($errors->has('ubicacion'))
+            <span class="help-block">*{{ $errors->first('ubicacion') }}</span>
+          @endif
         </div>
 
         <div class="row">
@@ -125,15 +203,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-          Facebook</a>
-        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-          Google+</a>
-      </div>
-
       <a href="{{url('/login')}}" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->

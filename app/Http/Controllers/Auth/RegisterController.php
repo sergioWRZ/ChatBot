@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Colegio;
 use App\Persona;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -32,7 +33,12 @@ class RegisterController extends Controller
       'celular' => 'required|string|max:10',
       'fecha_nacimiento' => 'required',
       'password' => 'required|string|min:6|confirmed',
-      'acepto' => 'required'
+      'acepto' => 'required',
+      'nombre' => 'required|string|max:50',
+      'codigo_seduca' => 'required',
+      'telefonoc' => 'required|string|max:10',
+      'ciudad' => 'required',
+      'ubicacion' => 'required'
     ]);
   }
   
@@ -49,6 +55,7 @@ class RegisterController extends Controller
       $data['roll_id'] = 1;//Roll de Director
     }
     $id = Persona::_crearPersona($data);
+    Colegio::_crearColegio($id, $data);
     return User::_crearUser($data, $id);
   }
 }
