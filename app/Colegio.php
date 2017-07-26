@@ -41,5 +41,19 @@ class Colegio extends Model
       'ciudad' => $data['ciudad'],
       'ubicacion' => $data['ubicacion'],
     ]);
+    $lastId = $this->all()->last()->id;
+    return $lastId;
   }
+  
+  public function scope_getIdColegio($query, $codigo_seduca)
+  {
+    $id = $query->whereCodigoSeduca($codigo_seduca)->get();
+    if(count($id) == 0){
+      $id = -1;
+    }else{
+      $id = $id->first()->id;
+    }
+    return $id;
+  }
+  
 }

@@ -29,4 +29,13 @@ class User extends Authenticatable
       'persona_id' => $id,
     ]);
   }
+
+  public function scope_crearSuperUser($query, array $data)
+  {
+    return $this->create([
+      'name' => $data['name'],
+      'email' => $data['email'],
+      'password' => bcrypt($data['password']),
+    ]);
+  }
 }

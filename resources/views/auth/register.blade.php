@@ -22,6 +22,18 @@
           @endif
         </div>
 
+        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
+          @if ($errors->has('email'))
+            <label class="control-label" for="email"><i class="fa fa-times-circle-o"></i> Input with
+              error</label>
+          @endif
+          <input type="email" class="form-control" placeholder="Email..." name="email" value="{{ old('email') }}">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          @if ($errors->has('email'))
+            <span class="help-block">*{{ $errors->first('email') }}</span>
+          @endif
+        </div>
+
         <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
           @if ($errors->has('password'))
             <label class="control-label" for="password"><i class="fa fa-times-circle-o"></i> Input with
@@ -71,18 +83,6 @@
           </div>
         </div>
 
-        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-          @if ($errors->has('email'))
-            <label class="control-label" for="email"><i class="fa fa-times-circle-o"></i> Input with
-              error</label>
-          @endif
-          <input type="email" class="form-control" placeholder="Email..." name="email" value="{{ old('email') }}">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          @if ($errors->has('email'))
-            <span class="help-block">*{{ $errors->first('email') }}</span>
-          @endif
-        </div>
-
         <div class="form-group {{ $errors->has('celular') ? ' has-error' : '' }} has-feedback">
           @if ($errors->has('celular'))
             <label class="control-label" for="celular"><i class="fa fa-times-circle-o"></i> Input with
@@ -115,6 +115,20 @@
           <span class="fa fa-key form-control-feedback"></span>
           @if ($errors->has('codigo_seduca'))
             <span class="help-block">*{{ $errors->first('codigo_seduca') }}</span>
+          @endif
+        </div>
+
+        <div class="form-group {{ $errors->has('turno') ? ' has-error' : '' }}">
+          @if ($errors->has('turno'))
+            <label class="control-label" for="turno"><i class="fa fa-times-circle-o"></i> Hubo un error...</label>
+          @endif
+          <select name="turno" class="form-control select2" style="width: 100%;">
+            <option value="1">Mañana</option>
+            <option value="2">Tarde</option>
+            <option value="3">Noche</option>
+          </select>
+          @if ($errors->has('turno'))
+            <span class="help-block">*{{ $errors->first('turno') }}</span>
           @endif
         </div>
 

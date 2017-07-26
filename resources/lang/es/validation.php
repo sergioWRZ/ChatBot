@@ -12,6 +12,7 @@ return [
   | as the size rules. Feel free to tweak each of these messages here.
   |
   */
+  'norepetido'           => 'El turno de este colegio ya fue registrado.',
   'serg_alfabeto'        => 'El campo :attribute debe ser solo texto.',
   'accepted'             => 'El campo :attribute debe ser aceptado.',
   'active_url'           => 'El campo :attribute no es una URL válida.',

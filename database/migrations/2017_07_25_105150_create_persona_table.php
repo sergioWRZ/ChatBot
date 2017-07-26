@@ -19,12 +19,8 @@ class CreatePersonaTable extends Migration
           $table->char('apellidos', 50);
           $table->char('celular', 10)->nullable();
           $table->date('fecha_nacimiento')->nullable();
-
-          $table->integer('colegio_id');
+          $table->integer('colegio_id')->nullable();
           $table->char('tipo_persona', 1);
-
-          $table->integer('curso_id')->nullable();
-
           $table->softDeletes();
           $table->timestamps();
         });
