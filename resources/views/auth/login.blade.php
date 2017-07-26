@@ -9,7 +9,7 @@
           <h3><b>Chatbot </b>School</h3>
         </div>
         <div class="panel-body">
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg">Inicia secion con tu cuenta</p>
 
           <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             {!! csrf_field() !!}
@@ -42,16 +42,7 @@
               <!-- /.col -->
             </div>
           </form>
-
-          <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-              Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-              Google+</a>
-          </div>
-          <!-- /.social-auth-links -->
-
+          <br>
           <a href="#">I forgot my password</a><br>
           <a href="{{url('/register')}}" class="text-center">Register a new membership</a>
         </div>
