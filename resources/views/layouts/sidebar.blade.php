@@ -5,6 +5,6 @@
                 Infyom Generator
             </a>
         </li>
-       @include('layouts.menu')
+       @include('layouts.menu_dir')
     </ul>
 </div>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   {!!Html::style('plugins/datepicker/datepicker3.css')!!}
   {!!Html::style('plugins/select2/select2.min.css')!!}
+  {!!Html::style('plugins/datatables/dataTables.bootstrap.css')!!}
   <!-- Theme style -->
   {!!Html::style('dist/css/AdminLTE.min.css')!!}
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -111,42 +112,7 @@
       </div>
 
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">Panel Principal</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-institution"></i> <span>Adm. Escuela</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-male"></i> Docentes</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-folder-open"></i> Materias</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-archive"></i> Cursos</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-comments"></i> <span>Chatbot School</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-comments"></i> Chatbot</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-commenting"></i> Registros</a></li>
-          </ul>
-        </li>
-
-        <li class="header">Bitacora</li>
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-bars"></i> <span>Control Bitacora</span>
-          </a>
-        </li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-      </ul>
+      @include('layouts.menu_dir')
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -154,7 +120,7 @@
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div id="Mainbody" class="content-wrapper">
 
     @yield('content')
 
@@ -370,6 +336,10 @@
 {!!Html::script('plugins/jQuery/jquery-2.2.3.min.js')!!}
 <!-- Bootstrap 3.3.6 -->
 {!!Html::script('bootstrap/js/bootstrap.min.js')!!}
+{!!Html::script('plugins/datatables/jquery.dataTables.min.js')!!}
+{!!Html::script('plugins/datatables/dataTables.bootstrap.min.js')!!}
+{!!Html::script('plugins/select2/select2.full.min.js')!!}
+{!!Html::script('plugins/datepicker/bootstrap-datepicker.js')!!}
 <!-- SlimScroll -->
 {!!Html::script('plugins/slimScroll/jquery.slimscroll.min.js')!!}
 <!-- FastClick -->
@@ -378,5 +348,11 @@
 {!!Html::script('dist/js/app.min.js')!!}
 <!-- AdminLTE for demo purposes -->
 {!!Html::script('dist/js/demo.js')!!}
+{!!Html::script('js/theme.js')!!}
+{!!Html::script('js/metodos.js')!!}
+@stack('scripts')
+<script>
+
+</script>
 </body>
 </html>

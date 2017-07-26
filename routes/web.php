@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,17 +23,11 @@ Route::get('/policy', function () {
     return 'We do not reveal any information to public.';
 });
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
 Route::resource('users', 'UserController');
 
-Auth::routes();
+Route::resource('docentes','DocenteController');
 
-Route::get('/home', 'HomeController@index');
+
