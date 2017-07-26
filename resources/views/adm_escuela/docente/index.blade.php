@@ -38,7 +38,7 @@
               </thead>
               <tbody>
               @foreach($docentes as $docente)
-                @include('auth.confirm')
+                @include('adm_escuela.docente.modals.confirm')
                 <tr>
                   <td>{{ $docente->nombres }}</td>
                   <td>{{ $docente->apellidos }}</td>
