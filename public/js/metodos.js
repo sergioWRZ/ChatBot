@@ -83,3 +83,65 @@ function showModalEditDocente(url){
     });
     $('#edit_docente').modal('show');
 }
+
+function crearMateria() {
+    var form = $('#form-add-materia');
+    var url = form.attr('action');
+    $.post(url, form.serialize(), function(result){
+        materia();
+    }).fail(function(dato){
+        var errors = dato.responseJSON;
+        if ($.trim(errors)) {
+            $.each(errors, function(key, value) {
+                console.log(key);
+                $("#create-materia-" + key).show();
+                $("#create-materia-" + key).text(value[0]);
+            });
+        }
+    });
+}
+
+function cargarEditarMateria(id, nombre) {
+    $("#materia-id").val(id);
+    $("#nombre-materia").val(nombre);
+    $("#nombre-materia").prop('readonly',false);
+}
+
+function editarMateria(url) {
+    var token = $('#token-materia').val();
+    var id = $("#materia-id").val();
+    var nombre = $("#nombre-materia").val();
+    url = url.replace(':id', id);
+    $.ajax({
+        type: 'PUT',
+        url: url,
+        headers: {'X-CSRF-TOKEN':token},
+        data:{'nombre':nombre},
+        dataType: 'json',
+        success: function(data){
+            materia();
+        },
+        error: function(error){
+            var errors = error.responseJSON;
+            if ($.trim(errors)){
+                $.each( errors, function( key, value ) {
+                    $("#edit-materia-" + key).show();
+                    $("#edit-materia-" + key).text(value[0]);
+                });
+            }
+        }
+    });
+}
+
+function deleteMateria(url) {
+    var token = $('#token-delete-materia').val();
+    $.ajax({
+        type: 'DELETE',
+        url: url,
+        headers: {'X-CSRF-TOKEN':token},
+        dataType: 'json',
+        success: function(data) {
+            materia();
+        }
+    });
+}

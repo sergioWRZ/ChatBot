@@ -30,4 +30,4 @@ Route::resource('users', 'UserController');
 
 Route::resource('docentes','DocenteController');
 
-
+Route::resource('materias','MateriaController');

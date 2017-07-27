@@ -2,84 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MateriaFormRequest;
 use App\Materia;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      $materias = Materia::_getAll()->get();
+      $view = view('adm_escuela.materia.index-materia', compact('materias'));
+      return Response($view);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(MateriaFormRequest $request)
     {
-        //
+      Materia::_crearMateria($request);
+      return response()->json(['bien' => 'okay']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Materia  $materia
-     * @return \Illuminate\Http\Response
-     */
     public function show(Materia $materia)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Materia  $materia
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Materia $materia)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Materia  $materia
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Materia $materia)
+    public function update(MateriaFormRequest $request, Materia $materia)
     {
-        //
+      $materia->update($request->all());
+      $materia->save();
+      return response()->json(['bien' => 'okay']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Materia  $materia
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Materia $materia)
     {
-        //
+      $materia->delete();
+      return response()->json(['bien' => 'okay']);
     }
 }
