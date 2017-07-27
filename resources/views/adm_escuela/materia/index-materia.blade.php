@@ -77,14 +77,16 @@
               <tbody>
               @foreach($materias as $materia)
                 @include('adm_escuela.materia.confirm-materia')
-                <tr onclick="cargarEditarMateria('{{ $materia->id }}', '{{ $materia->nombre }}')">
-                  <td>{{ $materia->nombre }}</td>
+                <tr>
+                  <td onclick="cargarEditarMateria('{{ $materia->id }}', '{{ $materia->nombre }}')">
+                    {{ $materia->nombre }}
+                  </td>
                   <td colspan="3" style="text-align:center;">
                     {{--<a href="#" class="btn btn-sm btn-success">
                       <i class="fa fa-eye"></i>
                     </a>--}}
                     <a class="btn btn-sm btn-danger btn-delete"
-                       data-target="#modal_confirm-materia{{$materia->nombre}}-{{$materia->id}}"
+                       data-target="#modal_confirm-materia{{ str_replace(" ", "-", $materia->nombre) }}-{{$materia->id}}"
                        data-toggle="modal" class="btn btn-danger">
                       <i class="fa fa-trash"></i>
                     </a>

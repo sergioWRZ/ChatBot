@@ -145,3 +145,7 @@ function deleteMateria(url) {
         }
     });
 }
+
+function prueba(dato){
+    return dato + " jojo";
+}

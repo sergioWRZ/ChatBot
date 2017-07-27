@@ -1,4 +1,5 @@
-<div class="modal fade" id="modal_confirm-materia{{$materia->nombre}}-{{$materia->id}}" tabindex="-1" role="dialog">
+<div class="modal fade"
+     id="modal_confirm-materia{{str_replace(" ", "-", $materia->nombre)}}-{{$materia->id}}" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="box box-danger">

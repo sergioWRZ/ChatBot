@@ -52,7 +52,7 @@
                         <i class="fa fa-eye"></i>
                       </a>--}}
                       <a class="btn btn-sm btn-danger btn-delete"
-                         data-target="#modal_confirm-{{$docente->nombres}}-{{$docente->id}}"
+                         data-target="#modal_confirm-{{ str_replace(" ","-",$docente->nombres) }}-{{$docente->id}}"
                          data-toggle="modal" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                       </a>

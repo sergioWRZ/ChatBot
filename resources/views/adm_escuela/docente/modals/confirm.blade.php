@@ -1,4 +1,5 @@
-<div class="modal fade" id="modal_confirm-{{$docente->nombres}}-{{$docente->id}}" tabindex="-1" role="dialog">
+<div class="modal fade"
+     id="modal_confirm-{{ str_replace(" ","-",$docente->nombres) }}-{{$docente->id}}" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="box box-danger">
